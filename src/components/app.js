@@ -4,7 +4,8 @@ import { Router } from 'preact-router';
 import Header from './header';
 // import Home from '../routes/home';
 import Profile from '../routes/profile';
-import Topics from '../routes/topics';
+// import Topics from '../routes/topics';
+import Topics from './topics';
 // import Home from 'async!../routes/home';
 // import Profile from 'async!../routes/profile';
 
