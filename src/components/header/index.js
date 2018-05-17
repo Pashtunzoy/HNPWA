@@ -9,7 +9,7 @@ export default class Header extends Component {
 				<h1>HNPWA</h1>
 				<nav>
 					<Link activeClassName={style.active} href="/">Top</Link>
-					<Link activeClassName={style.active} href="/new">New</Link>
+					<Link activeClassName={style.active} href="/newest">New</Link>
 					<Link activeClassName={style.active} href="/show">Show</Link>
 					<Link activeClassName={style.active} href="/ask">Ask</Link>
 					<Link activeClassName={style.active} href="/jobs">Jobs</Link>

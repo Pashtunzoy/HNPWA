@@ -30,7 +30,7 @@ export default class App extends Component {
 				<Router onChange={this.handleRoute}>
 					{/* <Home path="/" /> */}
 					<Topics path="/" />
-					<Topics path="/new" />
+					<Topics path="/newest" />
 					<Topics path="/show" />
 					<Topics path="/ask" />
 					<Topics path="/jobs" />
