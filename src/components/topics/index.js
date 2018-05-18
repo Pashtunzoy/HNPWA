@@ -8,8 +8,8 @@ export default class Profile extends Component {
 	};
   
 	fetchTop(path) {
-		console.log(path);
-		fetch(`https://api.hnpwa.com/v0/${path}/1.json`)
+		let pageNumb = 1;
+		fetch(`http://node-hnapi.herokuapp.com/${path}?page=${pageNumb}`)
 			.then(res => res.json())
 			.then(data => this.setState({ topics: data, currentURL: path }));
 	}
@@ -40,22 +40,22 @@ export default class Profile extends Component {
 		if ( path !== currentURL ) {
 			console.log('Called Inside');
 			// this.setState({ currentURL: pathname });
-			this.fetchTop(path);
+			return this.fetchTop(path);
 		}
+		return false;
 	}
   
 	render({ path }) {
 		const { topics } = this.state;
 		let count = 1;
 		return (
-			<div class={style.profile}>
-				<h2>{this.props.path}</h2>
+			<div class={style.topic_list}>
 				<ul>
 					{topics.map(topic => (<li>
-						<span>{count++}</span>
-						<a href={`/`}>{topic.title}</a>
-						<a href={`/`}>{topic.comments_count}</a>
-						<span>{topic.points} by {topic.user} 1h</span>
+						<span class={style.count}> {count++} </span>
+						<a href={`/`} class={style.title}>{topic.title}</a>
+						<span class={style.topic_points}>{topic.points} by {topic.user} 1h</span>
+						<a href={`/`} class={style.comment_count}>{topic.comments_count}</a>
 					</li>)
 					)}
 				</ul>
