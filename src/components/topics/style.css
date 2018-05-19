@@ -1,41 +1,65 @@
 .topic_list {
-  padding: 56px 20px;
+  padding: 40px 0;
   min-height: 100%;
-  width: 100%;
+}
+
+ul {
+  padding: 0;
 }
 
 li {
-  padding: 10px;
+  padding: 8px 30px;
   background-color:#ffc107;
-  /* margin: 1em; */
   color: black;
-  /* display: block; */
+  border-bottom: 1px solid #b3b3b3c7;
+  list-style: none;
 }
 
 .title {
   color: black;
+  display: inline-block;
+  margin-top: -1px;
+  margin-left: 10px;
+}
+
+.meta {
   display: block;
+  margin-left: 10px;
 }
 
 .count {
-  padding-left: 10px;
-  font-size: 1.5em;
+  height: 16px;
+  display: inline-block;
+  font-size: 1.1em;
+  margin-left: -25px;
 }
 
 li a {
   text-decoration: none;
   list-style: none;
   color: black;
-  padding-left: 10px;
 }
 
 .topic_points {
-  padding-left: 10px;
-  border: 1px solid black;
+  color: tomato;
 }
 
 .comment_count {
   padding: 0 5px;
-  float: right;
-  border: 1px solid black;
+  margin-left: 9px;
+  /* float: right; */
+  border: 2px solid white;
+}
+
+
+@media (min-width: 580px) {
+  .topic_list {
+    padding: 56px 20px;
+    min-height: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  ul {
+    padding: 0 40px;
+  }
 }

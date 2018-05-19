@@ -7,9 +7,9 @@ export default class Profile extends Component {
 		currentURL: ''
 	};
   
-	fetchTop(path) {
+	fetchTopics(path) {
 		let pageNumb = 1;
-		fetch(`http://node-hnapi.herokuapp.com/${path}?page=${pageNumb}`)
+		fetch(`https://node-hnapi.herokuapp.com${path}?page=${pageNumb}`)
 			.then(res => res.json())
 			.then(data => this.setState({ topics: data, currentURL: path }));
 	}
@@ -18,7 +18,7 @@ export default class Profile extends Component {
 		let chosenPath = '';
 		switch (path) {
 			case '/':
-				chosenPath = 'news';
+				chosenPath = '/news';
 				break;
 			default:
 				chosenPath = path;
@@ -26,11 +26,17 @@ export default class Profile extends Component {
 		}
 		return chosenPath;
 	}
+  
+	calcTime(time) {
+		let currentTime = new Date();
+		time = new Date(time * 1000);
+		return Math.floor(((currentTime - time) / 1000 / 60 / 60));
+	}
 
 	componentDidMount() {
 		const { pathname } = window.location;
 		let path = this.whichURL(pathname);
-		this.fetchTop(path);
+		this.fetchTopics(path);
 	}
   
 	shouldComponentUpdate() {
@@ -40,7 +46,7 @@ export default class Profile extends Component {
 		if ( path !== currentURL ) {
 			console.log('Called Inside');
 			// this.setState({ currentURL: pathname });
-			return this.fetchTop(path);
+			return this.fetchTopics(path);
 		}
 		return false;
 	}
@@ -52,10 +58,12 @@ export default class Profile extends Component {
 			<div class={style.topic_list}>
 				<ul>
 					{topics.map(topic => (<li>
-						<span class={style.count}> {count++} </span>
-						<a href={`/`} class={style.title}>{topic.title}</a>
-						<span class={style.topic_points}>{topic.points} by {topic.user} 1h</span>
-						<a href={`/`} class={style.comment_count}>{topic.comments_count}</a>
+						<span class={style.count}> {count++}. </span>
+						<a href={topic.url} class={style.title}>{topic.title}</a>
+						<section class={style.meta}>
+							<span class={style.topic_points}>{topic.points} by {topic.user} {this.calcTime(topic.time)}</span>
+							<a href={`/item/${topic.id}`} class={style.comment_count}>{topic.comments_count}</a>
+						</section>
 					</li>)
 					)}
 				</ul>
