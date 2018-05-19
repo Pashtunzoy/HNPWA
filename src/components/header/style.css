@@ -7,30 +7,37 @@
 	padding: 0;
 	background: #bd2222;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-	z-index: 50;
+  z-index: 50;
+  text-align: center;
+  padding-left: 53px;
 }
 
-.header h1 {
-	float: left;
-	margin: 0;
-	padding: 0 15px;
-	font-size: 24px;
-	line-height: 56px;
+.logo {
+  font-size: 22px;
+  line-height: 55px;
+  margin: 13px 6px 0 7px;
+  padding: 0 1px;
 	font-weight: 400;
-	color: #FFF;
+  color: #FFF;
+  border: 1px solid white;
+  border-width: 2px;
+}
+
+.brand {
+  display: none;
 }
 
 .header nav {
-	float: right;
-	font-size: 100%;
+  display: inline-block;
+  font-size: 100%;
+  margin: 0;
 }
 
 .header nav a {
 	display: inline-block;
-	height: 56px;
-	line-height: 56px;
-	padding: 0 15px;
-	min-width: 50px;
+  height: 55px;
+  line-height: 57px;
+	padding: 0 14px;
 	text-align: center;
 	background: rgba(255,255,255,0);
 	text-decoration: none;
@@ -45,4 +52,44 @@
 
 .header nav a.active {
 	background: rgba(0,0,0,0.4);
+}
+
+@media (max-width: 375px) {
+  .header {
+    text-align: none;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 580px) {
+  .logo {
+    float: left;
+    font-size: 22px;
+    line-height: 27px;
+    margin: 13px 6px 0 7px;
+    padding: 0 1px;
+    border: 1px solid white;
+    border-width: 2px;
+  }
+  .brand {
+    float: left;
+    display: initial;
+    color: black;
+    line-height: 57px;
+    font-weight: 500;
+    font-size: 1.1em;
+  }
+
+  .header nav {
+    float: right;
+    font-size: 100%;
+    clear: none;
+    margin: 0 21px;
+  }
+
+  .header nav a {
+    height: 56px;
+    line-height: 56px;
+    min-width: 50px;
+  }
 }
