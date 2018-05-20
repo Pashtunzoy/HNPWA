@@ -6,6 +6,7 @@ import Header from './header';
 import Profile from '../routes/profile';
 // import Topics from '../routes/topics';
 import Topics from './topics';
+import Comments from './topics/comments';
 // import Home from 'async!../routes/home';
 // import Profile from 'async!../routes/profile';
 
@@ -34,6 +35,7 @@ export default class App extends Component {
 					<Topics path="/show" />
 					<Topics path="/ask" />
 					<Topics path="/jobs" />
+					<Comments path="/item/:id" />
 					<Profile path="/profile/" user="me" />
 					<Profile path="/profile/:user" />
 				</Router>
