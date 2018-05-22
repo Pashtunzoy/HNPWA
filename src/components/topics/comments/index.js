@@ -14,6 +14,11 @@ export default class Comments extends Component {
   			this.setState({ topic: data });
   		});
   }
+
+  recursiveComments(cm) {
+  	if (cm.length <= 1) return cm.shift();
+  	console.log(cm);
+  }
   
   componentDidMount() {
   	this.fetchTopic();
@@ -29,7 +34,7 @@ export default class Comments extends Component {
   			<span>{time_ago}</span>
   			<ul>
   				{comments && comments.map(comment => (<li>
-  					{comment.content}
+  					{recursiveComments(comment)}
   				</li>
   				))}
   			</ul>
