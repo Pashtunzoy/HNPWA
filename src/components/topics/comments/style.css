@@ -1,5 +1,48 @@
+ul {
+  background-color: #ffc107;
+}
 .comments {
   padding: 56px 20px;
   min-height: 100%;
   width: 100%;
+}
+
+.level1 {
+  color: black;
+  margin-left: 4%;
+}
+
+.level2 {
+  color: green;
+  margin-left: 10%;
+}
+
+.level3 {
+  margin-left: 14%;
+  color: yellow;
+}
+
+.level4 {
+  color: blanchedalmond;
+  margin-left: 18%;
+}
+
+.level5 {
+  color: silver;
+  margin-left: 22%;
+}
+
+.level6 {
+  color: silver;
+  margin-left: 24%;
+}
+
+.level7 {
+  color: lightpink;
+  margin-left: 26%;
+}
+
+.level8 {
+  color: skyblue;
+  margin-left: 30%;
 }
