@@ -59,22 +59,18 @@ export default class Comments extends Component {
   commentsView(flattendComments) {
   	return flattendComments && flattendComments.map(cArr =>
   		cArr.map(comment => {
-        let level = `level${comment.level}`;
+        let levelStyle = style[`level${comment.level}`];
         return (
-  				<li class={style[`${level}`]}>
-            <p dangerouslySetInnerHTML={{ __html: comment.content }}/>
+  				<li class={levelStyle}>
+            <p dangerouslySetInnerHTML={{ __html: comment.content }} />
   				</li>
   			)}
   		));
   }
 
-  componentWillMount() {
-  	this.fetchTopic();
+  componentDidMount() {
+    this.fetchTopic();
   }
-  // componentDidMount() {
-  //   this.fetchTopic();
-  //   console.log('DidMount');
-  // }
 
   render() {
     const { topic } = this.state;
