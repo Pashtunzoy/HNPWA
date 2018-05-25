@@ -1,4 +1,6 @@
 import { h, Component } from 'preact';
+import CommentView from './commentView';
+import recursiveComments from '../../../utils/commentRecursion';
 import style from './style';
 
 export default class Comments extends Component {
@@ -17,76 +19,28 @@ export default class Comments extends Component {
   		});
   }
 
-  recursiveComments({ comments = [] }) {
-  	// Gets the array returned by the recursive function
-  	// console.log(data.comments);
-  	return comments.map(c => {
-  		let cm = c.comments.slice(0, 1).shift();
-  	  let laterArray = {};
-  	  laterArray.comments = c.comments.slice(1, c.length);
-  	  let initialArr = [];
-  	  initialArr.push(c.content);
-  	  let finalResult = [];
-  	  delete c.comments;
-  	  finalResult.push(c);
-  	  return this.recursive(cm, initialArr, laterArray, finalResult);
-  	});
-  }
-
-  // Main recursive algorithm for the comment to traverse through and flatten it
-  recursive(cm, arr, laterArr, finalResult) {
-  	if (!cm || !cm.comments.length) {
-  		cm && cm.content ? arr.push(cm.content) && finalResult.push(cm) : cm;
-  		if (laterArr.comments.length) {
-  			laterArr.comments = laterArr.comments
-  				.filter(arr => arr.length >= 1 || arr.content)
-  				.map((c, i) => c[i] || c);
-  			return this.recursive(laterArr.comments.shift(), arr, laterArr, finalResult);
-  		}
-  		return finalResult;
-  	}
-  	!arr.includes(cm.content) && cm.content ? arr.push(cm.content) && finalResult.push(cm) : arr;
-  	let currentCM = cm.comments.shift();
-  	if (currentCM.comments.length) {
-  		laterArr.comments.unshift(currentCM.comments);
-  	}
-  	else if (!laterArr.comments.length) {
-  		laterArr.comments.unshift(cm.comments);
-  	}
-  	return this.recursive(currentCM, arr, laterArr, finalResult);
-  }
-
-  commentsView(flattendComments) {
-  	return flattendComments && flattendComments.map(cArr =>
-  		cArr.map(comment => {
-        let levelStyle = style[`level${comment.level}`];
-        return (
-  				<li class={levelStyle}>
-            <p dangerouslySetInnerHTML={{ __html: comment.content }} />
-  				</li>
-  			)}
-  		));
-  }
-
   componentDidMount() {
     this.fetchTopic();
   }
 
   render() {
     const { topic } = this.state;
-  	let flattendComments = null;
-  	if (topic.comments.length >= 1) {
-  		flattendComments = topic.comments.length && this.recursiveComments(topic);
-  	}
-  	const { title, domain, user, time_ago, comments } = topic;
+    const { title, domain, user, time_ago: timeAgo } = topic;
+    let flattendComments = [];
+
+    if (topic.comments.length >= 1) {
+      console.log('Inside function call');
+  		flattendComments = recursiveComments(topic);
+    }
+
   	return (
   		<section>
   			<h1>{title}({domain})</h1>
   			<span>{user}</span>
-  			<span>{time_ago}</span>
+  			<span>{timeAgo}</span>
   			<ul class={style[`comments-list`]}>
   				{/* cArr is an array & withen it contains the comments for each section */}
-  				{topic.comments.length >= 1 && this.commentsView(flattendComments)}
+  				{flattendComments.length >= 1 && <CommentView comments={flattendComments} style={style} />}
   			</ul>
   		</section>
   	);

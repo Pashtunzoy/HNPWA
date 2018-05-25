@@ -44,7 +44,7 @@ export default class Profile extends Component {
 		let path = this.whichURL(pathname);
 		const { currentURL } = this.state;
 		if ( path !== currentURL ) {
-			console.log('Called Inside');
+			// console.log('Called Inside');
 			// this.setState({ currentURL: pathname });
 			return this.fetchTopics(path);
 		}
