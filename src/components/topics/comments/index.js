@@ -25,7 +25,7 @@ export default class Comments extends Component {
 
   render() {
   	const { topic } = this.state;
-  	const { title, domain, user, time_ago: timeAgo } = topic;
+  	const { title, domain, user, time_ago: timeAgo, comments_count: commentsCount } = topic;
   	let flattendComments = [];
 
   	if (topic.comments.length >= 1) {
@@ -33,10 +33,14 @@ export default class Comments extends Component {
   	}
 
   	return (
-  		<section>
-  			<h1>{title}({domain})</h1>
-  			<span>{user}</span>
-  			<span>{timeAgo}</span>
+  		<section class={style[`comments-view`]}>
+  			<header class={style[`comments-header`]}>
+  				<h1>{title}</h1>
+  				<span> ({domain}) </span>
+  				<span>{user}</span>
+  				<span>{timeAgo}</span>
+  				<span class={style[`comments-count`]}> | comments {commentsCount}</span>
+  			</header>
   			<ul class={style[`comments-list`]}>
   				{/* cArr is an array & withen it contains the comments for each section */}
   				{ flattendComments.length >= 1 && flattendComments.map(cm =>
@@ -44,6 +48,7 @@ export default class Comments extends Component {
   						let levelStyle = style[`level${comment.level}`];
   						return (
   							<li class={levelStyle}>
+  								<span class={style[`comment-info`]}>{ comment.user } { comment.time_ago }</span>
   								<p dangerouslySetInnerHTML={{ __html: comment.content }} />
   							</li>
   						);
