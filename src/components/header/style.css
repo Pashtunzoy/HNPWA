@@ -15,6 +15,7 @@
 .logo {
   font-size: 22px;
   line-height: 55px;
+  /* margin: 13px 6px 0 7px; */
   margin: 13px 6px 0 7px;
   padding: 0 1px;
 	font-weight: 400;
@@ -37,7 +38,8 @@
 	display: inline-block;
   height: 55px;
   line-height: 57px;
-	padding: 0 14px;
+  /* padding: 0 14px; */
+  padding: 0 11px;
 	text-align: center;
 	background: rgba(255,255,255,0);
 	text-decoration: none;
