@@ -42,7 +42,7 @@ export default class Comments extends Component {
   				<span class={style[`comments-count`]}> | comments {commentsCount}</span>
   			</header>
   			<ul class={style[`comments-list`]}>
-  				{/* cArr is an array & withen it contains the comments for each section */}
+  				{/* flattenedComments is an array & within it contains the comments for each comment section */}
   				{ flattendComments.length >= 1 && flattendComments.map(cm =>
   					cm.map(comment => {
   						let levelStyle = style[`level${comment.level}`];

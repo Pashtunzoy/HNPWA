@@ -44,8 +44,6 @@ export default class Profile extends Component {
 		let path = this.whichURL(pathname);
 		const { currentURL } = this.state;
 		if ( path !== currentURL ) {
-			// console.log('Called Inside');
-			// this.setState({ currentURL: pathname });
 			return this.fetchTopics(path);
 		}
 		return false;
@@ -61,8 +59,8 @@ export default class Profile extends Component {
 						<span class={style.count}> {count++}. </span>
 						<a href={topic.url} class={style.title}>{topic.title}</a>
 						<section class={style.meta}>
-							<span class={style.topic_points}>{topic.points} by {topic.user} {this.calcTime(topic.time)}</span>
-							<a href={`/item/${topic.id}`} class={style.comment_count}>{topic.comments_count}</a>
+							<span class={style.topic_points}>{topic.points} point(s) by {topic.user} {this.calcTime(topic.time)}</span>
+							{<a href={`/item/${topic.id}`} class={style.comment_count}>{topic.comments_count}</a>}
 						</section>
 					</li>)
 					)}
