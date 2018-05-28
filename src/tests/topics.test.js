@@ -8,7 +8,7 @@ describe('Initial Test of the Topics', () => {
 
     test('Topics renders initial', () => {
         const context = shallow(<Topics />);
-        // expect(context.find('h1').text()).toBe('Preact App');
-        // expect(context.find(<Link />).length).toBe(3);
+        expect(context.find('div').contains('ul').contains('span')).toBeTruthy();
+        expect(context.find('div').contains('ul').contains('a')).toBeTruthy();
     });
 });
