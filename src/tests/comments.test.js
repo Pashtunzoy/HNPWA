@@ -3,7 +3,7 @@ import 'isomorphic-fetch';
 import Comments from '../components/topics/comments';
 import { Link } from 'preact-router/match';
 // See: https://github.com/mzgoddard/preact-render-spy
-import { shallow, deep } from 'preact-render-spy';
+import { shallow } from 'preact-render-spy';
 
 describe('Initial Test of the Comments', () => {
     test('Comments renders lists', () => {

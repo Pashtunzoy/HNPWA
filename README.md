@@ -1,6 +1,12 @@
 # preact-HNPWA
 
-## CLI Commands
+## Current Tech Stack
+
+* PreactJS
+* Webpack
+* PWA
+
+### CLI Commands
 
 ``` bash
 # install dependencies
